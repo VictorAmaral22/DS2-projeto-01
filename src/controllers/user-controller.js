@@ -4,7 +4,10 @@ class UsersController {
     async showDb(req, res){
         return res.send({ db: db });
     }
-
+    async getUser(req,res){
+        const user = req.session.user
+        return res.render("profile", {user:user})
+    }
     async cadastrar(req, res) {
         const user = req.body;
         db.users.push(user);

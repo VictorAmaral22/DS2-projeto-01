@@ -8,7 +8,7 @@ app.set('views', './src/view');
 
 // SESSION
 app.use(session({
-    secret: 'piansbdlhb87he097bauhbdabyloc8iq',
+    secret: 'BOMBAPATCH',
     resave: false,
     saveUninitialized: false,
     cookie: { secure: false }
@@ -29,7 +29,7 @@ app.use('*', (req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-    res.redirect('/home.html');
+    res.redirect('/home/home.html');
 });
 
 const filmesRoutes = require('./routes/filmes-routes');

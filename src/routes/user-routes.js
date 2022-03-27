@@ -12,4 +12,6 @@ routes.post('/login', userController.login);
 
 routes.get('/banco', userController.showDb);
 
+routes.get('/getUser', userController.getUser);
+
 module.exports = routes;

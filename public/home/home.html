@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marvel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div><h1>Polistation</h1></div>
+        <div id="lista">
+        <a href="/jogos">Ver jogos</a>
+        <button onclick="document.getElementById('id01').style.display='block'">Entrar</button>
+        </div>
+    </header>
+    <main>
+        <div id="img">
+            <div id="imgTitle">
+                <h1 id="title">Bem vindo ao PolistationStore! </h1>
+                <h1 id="title">Fique por dentro dos melhores </h1>
+                <h1 id="title">games da atualidade!</h1>
+                <button id="seeGames">
+                    Ver lista de jogos
+                </button>
+            </div>
+            <div id="id01" class="w3-modal">
+              <div class="w3-modal-content">
+                <div id="modal">
+                  <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                  <div id="column">
+                      <p id="loginP">Login:</p>
+                      <input class="w3-input w3-border w3-margin-bottom" placeholder="Email:" />
+                      <input class="w3-input w3-border w3-margin-bottom" placeholder="Senha:" />
+                      <button class="w3-button w3-block w3-blue w3-section w3-padding">Logar</button>
+                      <button class="w3-button w3-block w3-indigo w3-section w3-padding" id="criarCadastro" onclick="document.getElementById('id02').style.display='block'">Criar cadastro</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="id02" class="w3-modal">
+                <div class="w3-modal-content">
+                    <div id="modal">
+                        <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                        <div id="column">
+                            <p id="loginP">Cadastrar:</p>
+                            <input class="w3-input w3-border w3-margin-bottom" placeholder="Nome:" />
+                            <input class="w3-input w3-border w3-margin-bottom" placeholder="Email:" />
+                            <input class="w3-input w3-border w3-margin-bottom" placeholder="Senha:" />
+                            <button class="w3-button w3-block w3-blue w3-section w3-padding">Criar Conta</button>
+                        </div>
+                      </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </main>
+</body>
+</html>
