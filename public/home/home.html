@@ -35,9 +35,11 @@
                   <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
                   <div id="column">
                       <p id="loginP">Login:</p>
-                      <input class="w3-input w3-border w3-margin-bottom" placeholder="Email:" />
-                      <input class="w3-input w3-border w3-margin-bottom" placeholder="Senha:" />
-                      <button class="w3-button w3-block w3-blue w3-section w3-padding">Logar</button>
+                      <form action="/users/login" method="post">
+                            <input class="w3-input w3-border w3-margin-bottom" placeholder="Email:" name="email" />
+                            <input class="w3-input w3-border w3-margin-bottom" placeholder="Senha:" name="senha" />
+                            <button class="w3-button w3-block w3-blue w3-section w3-padding" type="submit">Logar</button>
+                      </form>
                       <button class="w3-button w3-block w3-indigo w3-section w3-padding" id="criarCadastro" onclick="document.getElementById('id02').style.display='block'">Criar cadastro</button>
                   </div>
                 </div>
@@ -49,10 +51,12 @@
                         <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-display-topright">&times;</span>
                         <div id="column">
                             <p id="loginP">Cadastrar:</p>
-                            <input class="w3-input w3-border w3-margin-bottom" placeholder="Nome:" />
-                            <input class="w3-input w3-border w3-margin-bottom" placeholder="Email:" />
-                            <input class="w3-input w3-border w3-margin-bottom" placeholder="Senha:" />
-                            <button class="w3-button w3-block w3-blue w3-section w3-padding">Criar Conta</button>
+                            <form action="/users/cadastrar" method="post">
+                                <input class="w3-input w3-border w3-margin-bottom" placeholder="Nome:" name="nome"/>
+                                <input class="w3-input w3-border w3-margin-bottom" placeholder="Email:" name="email"/>
+                                <input class="w3-input w3-border w3-margin-bottom" placeholder="Senha:" name="senha" type="password" />
+                                <button class="w3-button w3-block w3-blue w3-section w3-padding" type="submit">Criar Conta</button>
+                            </form>
                         </div>
                       </div>
                 </div>

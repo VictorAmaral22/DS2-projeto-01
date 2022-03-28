@@ -5,67 +5,25 @@ header{
     margin-left: 10px;
     flex-direction: row;
 }
-#lista{
-    align-self: center;
-}
-button{
-    margin-right: 30px;
-    border: none;
-    background-color: white;
-    cursor: pointer;
-}
-a{
-    cursor: pointer;
-    text-decoration: none;
-    color: black;
-    margin-right: 30px;
+#backblack{
+    background-color: #2E2E2E;
+    height: 35vh;
+    width: 100%;
 }
 #img{
     background-image: url("https://meups.com.br/wp-content/uploads/2020/11/Comercial-de-Spider-Man-Miles-Morales.jpg");
-    background-repeat: no-repeat;
+    width: 100px;
+    height: 100px;
+    background-position: center;
     background-size: cover;
-    height: 90vh;
-    width: 100.1vw;
-    margin-left: -10px;
+    border-radius: 50px
 }
-#imgTitle{
-    justify-content: center;
+#row{
     display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-items: flex-start;
-    height: 100%;
+    flex-direction: row;
+    margin-left: 20px;
 }
-#title{
+p{
+    font-size: 40px;
     color: white;
-    font-size: 48px;
-    margin-left: 80px;
-    font-weight: bold;
-}
-#seeGames{
-    background-color: "#18BBEE";
-    margin-left: 80px;
-    border: none;
-    border-radius: 50px;
-    padding: 5px;
-    color: "#18BBEE";
-}
-#modal{
-    height: 40vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-#column{
-    display: flex;
-    flex-direction: column;
-}
-#loginP{
-    align-self: center;
-}
-#criarCadastro{
-    border-width: 1px;
-    border: 1px;
-    border-color: black;
 }

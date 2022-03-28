@@ -1,5 +1,5 @@
 const db = require('../database/db');
-
+const {users} = require('../database/db');
 class UsersController {
     async showDb(req, res){
         return res.send({ db: db });
@@ -10,24 +10,24 @@ class UsersController {
     }
     async cadastrar(req, res) {
         const user = req.body;
-        db.users.push(user);
+        users.push(user);
         
         console.log("Push no users...");
         console.log("Users: ", users);
         
         req.session.user = user;
-        res.redirect("/");
+        res.render('profile/profile', {user:user});
     }
 
     async login(req, res) {
         const user = req.body;
-
+        console.log(req.body)
         const foundUser = users.find(item => item.email == user.email);
         if (!foundUser) return res.send("Usuario não encontrado");
 
         if (foundUser.senha == user.senha) {
             req.session.user = foundUser;
-            return res.send('Login');
+            return res.render('profile/profile', {user:foundUser});
         } else {
             return res.send('Usuário ou senha incorretos');
         }

@@ -1,9 +1,9 @@
-const db = require('../database/db');
+const {games} = require('../database/db');
 const { nanoid } = require('nanoid');
 
 class GamesController {
     async listaGeral (req, res) {
-        return res.render('listagem/listagem', { games: db.games });
+        return res.render('listagem/listagem', { games: games });
     }
     async detalhar (req, res) {}
     async addLista (req, res) {}
