@@ -1,0 +1,51 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10px;
+    flex-direction: row;
+}
+
+#backblack{
+    background-color: #2E2E2E;
+    height: 35vh;
+    width: 100%;
+}
+#img{
+    background-image: url("https://meups.com.br/wp-content/uploads/2020/11/Comercial-de-Spider-Man-Miles-Morales.jpg");
+    width: 200px;
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 100px;
+    margin-top: 20px;
+}
+#row{
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+}
+p{
+    font-size: 26px;
+    color: white;
+}
+#buttonTop{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    position: absolute;
+    top: 130px;
+    right: 180px;
+}
+#buttonTop2{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    position: absolute;
+    top: 130px;
+    right: 40px;
+}
+input {
+    height: 30px;
+    align-self: center;
+}

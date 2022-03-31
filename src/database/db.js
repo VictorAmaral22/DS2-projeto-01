@@ -1,4 +1,4 @@
-const db = {
+let db = {
     users: [
         {
             id: 1,
@@ -7,7 +7,7 @@ const db = {
             email: 'victor@gmail.com',
             senha: 'asdasd',
             imagem: 'https://www.tonica.la/__export/1587064435851/sites/debate/img/2020/04/16/john-shelby-joe-cole-peaky-blinders-siempre-fue-show-cillian-murphy-bbc.jpg_423682103.jpg',
-            datanasc: '2002-04-22',
+            dataRegistro: '2002-04-22',
             favoritos: []
         }, 
         {
@@ -17,7 +17,7 @@ const db = {
             email: 'silvio@gmail.com',
             senha: 'asdasd',
             imagem: 'https://onlineseries.com.br/wp-content/uploads/2020/01/Peaky-Blinders-6%C2%AA-temporada.jpg',
-            datanasc: '2002-04-26',
+            dataRegistro: '2002-04-26',
             favoritos: []
         }
     ],

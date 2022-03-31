@@ -1,41 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
     <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <link rel="stylesheet" href="/css/profile.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Marvel&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="/public/css/navbar.css">
+    <link rel="stylesheet" href="/css/navbar.css">
 </head>
 <body>
-    
     <%- include('../includes/navbar') %>
 
     <main>
         <div id="backblack">
+            <form action="/editUser" method="POST">
             <div id="row">
-                <div id="img"></div>
-                <div>
-                    <p>Nome</p>
-                    <p>Data de registro</p>
-                    <p>Email@hotmail.com</p>
-                </div>
-                <div>
-                    <input style="display:none">
-                    <input style="display:none">
-                    <input style="display:none">
-                </div>
+                <div id="img" style="background-image: url('<%- user.imagem %>');"></div>
+                    <div style="margin-top: 20px; margin-left: 20px;">
+                        <div id="row">
+                        <p>Nome:</p>
+                        <p id="nome">
+                            <%- user.nome %>
+                        </p>
+                        <input id="input" placeholder="Nome" style="display:none">
+                    </div>
+                        <div id="row">
+                        <p>Data de registro: </p>
+                        <p id="data">
+                            <%- user.dataRegistro %>
+                        </p>
+                        </div>
+                        
+                        <div id="row">
+                        <p>Email:</p>
+                        <p id="email"> 
+                            <%- user.email %>
+                        </p>
+                        <input id="input3" placeholder="Email" style="display:none">
+                        </div>
+                        <div id="row" className="muda" style="display:none">
+                            <p>Senha:</p>
+                            <input placeholder="Senha">
+                            </div>
+                    </div>
+
             </div>
-            <div>
-                <button>Editar conta</button>
-                <button>Apagar conta</button>
+            <div id="buttonTop">
+                <button type="button" onclick="AtivarInput()">Editar conta</button>
+                <button id="buttonConf" type="submit" style="display:none">Confirmar</button>
             </div>
+            </form>
+                <form id="buttonTop2" action="/users/delUser" method="POST">
+                    <button type="submit" onclick="">Apagar conta</button>
+                </form> 
         </div>
     </main>
+    <footer>
+        <h2>Lista de favoritos</h2>
+    </footer>
+    <script>
+        AtivarInput = ()=>{
+            if(document.getElementById('input').style.display == 'flex'){
+            document.getElementById('input').style.display= 'none'
+            document.getElementById('input3').style.display= 'none'
+            document.getElementById('nome').style.display= 'flex'
+            document.getElementById('email').style.display= 'flex'
+            document.getElementById('buttonConf').style.display= 'none'
+            document.getElementsByClassName('muda').style.display= 'flex'
+            }else{
+                document.getElementById('input').style.display= 'flex'
+                document.getElementById('input3').style.display= 'flex'
+                document.getElementById('nome').style.display= 'none'
+                document.getElementById('email').style.display= 'none'
+                document.getElementById('buttonConf').style.display= 'flex'
+                document.getElementsByClassName('muda').style.display= 'flex'
+            }
+        }
+    </script>
 </body>
 </html>
