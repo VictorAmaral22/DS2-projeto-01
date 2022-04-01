@@ -37,15 +37,7 @@ header {
 .header-list a {
     text-decoration: none;
 }
-.header-list button{
-    border: none;
-    color: blue;
-    background-color: white;
-    font-size: 16px;
-    margin-top: 15px;
-}
 
 .header-list:hover {
     background-color: #c4c4c4;
 }
-
