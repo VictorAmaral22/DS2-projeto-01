@@ -1,23 +1,23 @@
-const {
-    Router
-} = require('express');
+const { Router } = require('express');
 
 const UsersController = require('../controllers/user-controller');
 
 const routes = Router();
 
 const userController = new UsersController();
+const middlewareUser = (req, res, next) => {
+    const user = req.session.user;
+    console.log(user)
+    if(user){
+        next();
+    }else res.redirect('/home/home.html')
+};
 
 routes.post('/cadastrar', userController.cadastrar);
 routes.post('/login', userController.login);
-
-
-routes.get('/getUser', (req, res, next) => {
-    if (req.session.user) next();
-    else res.redirect('/login.html');
-}, userController.getUser);
-
-routes.post('/editUser', userController.editUser);
-routes.post('/delUser', userController.delUser);
+routes.post('/logout', userController.logout);
+routes.get('/getUser',middlewareUser, userController.getUser);
+// routes.post('/editUser', middlewareUser, userController.editUser);
+routes.post('/delUser', middlewareUser, userController.delUser);
 
 module.exports = routes;

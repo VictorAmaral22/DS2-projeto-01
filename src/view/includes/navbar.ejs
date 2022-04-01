@@ -11,11 +11,13 @@
             <a href="/users/getUser">Perfil</a>
         </div>
         <div class="header-list">
-            <a href="/login.html">logout</a>
+            <form action="/users/logout" method="post">
+                <button>logout</button>
+            </form>
         </div>
         <% } else { %>
         <div class="header-list">
-            <a href="/home/home.html">Login</a>
+            <a href="/login.html">Login</a>
         </div>
         <% } %>
     </div>
