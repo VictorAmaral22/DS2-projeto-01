@@ -29,7 +29,7 @@ app.use('*', (req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-    res.redirect('/home/home.html');
+    res.redirect('/home.html');
 });
 
 const gamesRoutes = require('./routes/games-routes');
@@ -42,7 +42,7 @@ app.use('/users', userRoutes);
 app.use('*', (req, res) => {
     return res.status(404).send(`
         <h1>Sorry, not found!!!</h1>
-        <a href="/home/home.html">VOLTAR</a>
+        <a href="/home.html">VOLTAR</a>
     `);
 })
 

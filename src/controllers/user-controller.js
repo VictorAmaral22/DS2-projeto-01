@@ -1,29 +1,30 @@
 const db = require('../database/db');
-const {
-    users
-} = require('../database/db');
+const {users} = require('../database/db');
 class UsersController {
-    async showDb(req, res) {
-        return res.send({
-            db: db
-        });
-    }
+
     async getUser(req, res) {
         const user = req.session.user
         console.log(user);
-        return res.render("profile/profile", {
-            user: user
-        })
+        return res.render("profile/profile", {user: user})
     }
+
     async cadastrar(req, res) {
         let addUser = {
             nome: req.body.nome,
             email: req.body.email,
             senha: req.body.senha,
             tipo: 2,
-            dataRegistro: new Date(),
+            dataRegistro: new Date()
+                .toISOString()
+                .split("T")[0]
+                .split('-')
+                .reverse()
+                .join('/'),
             favoritos: [],
-            imagem: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.auctus.com.br%2Fplanejamentoestrategico%2Fsem-imagem-avatar%2F&psig=AOvVaw2_KNbo3JNlXdIdL_js_8VU&ust=1648836835804000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNDejYH68PYCFQAAAAAdAAAAABAJ'
+            imagem: req.body.imagem != ''
+                ? req.body.imagem
+                : 'https://static.wixstatic.com/media/a5c2a6_a70e379178e64903b74c1c6f367107da~mv2.p' +
+                        'ng/v1/fill/w_544,h_544,al_c,lg_1,enc_auto/sem-imagem-avatar.png'
         }
         users.push(addUser);
 
@@ -40,35 +41,39 @@ class UsersController {
         const user = req.body;
         console.log(req.body)
         const foundUser = users.find(item => item.email == user.email);
-        if (!foundUser) return res.send("Usuario não encontrado");
-
+        if (!foundUser) 
+            return res.send("Usuario não encontrado");
+        
         if (foundUser.senha == user.senha) {
             req.session.user = foundUser;
-            return res.redirect('/users/getUser');
+            return res.redirect('/games');
         } else {
             return res.send('Usuário ou senha incorretos');
         }
     }
-    async editUser(req, res) {
-        const user = req.body;
-        console.log(req.body)
-        const foundUser = users.find(item => item.email == user.email);
 
-        if (foundUser.senha == user.senha) {
-            req.session.user = foundUser;
-            return res.render('profile/profile', {
-                user: foundUser
-            });
-        } else {
-            return res.send('Usuário ou senha incorretos');
-        }
+    async logout(req, res) {
+        req
+            .session
+            .destroy();
+        return res.redirect('/home.html');
     }
+
+    // async editUser(req, res) {     const user = req.body;
+    // console.log(req.body)     const foundUser = users.find(item => item.email ==
+    // user.email);     if (foundUser.senha == user.senha) {
+    // req.session.user = foundUser;         return res.render('profile/profile', {
+    //            user: foundUser         });     } else {         return
+    // res.send('Usuário ou senha incorretos');     } }
+
     async delUser(req, res) {
         const email = req.session.user.email
         const foundUser = users.find(item => item.email == email);
-        db.users.splice(foundUser, 1);
+        db
+            .users
+            .splice(foundUser, 1);
         console.log(db)
-        return res.redirect('/home/home.html');
+        return res.redirect('/home.html');
     }
 }
 
