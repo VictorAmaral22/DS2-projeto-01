@@ -18,7 +18,17 @@ let db = {
             imagem: 'https://onlineseries.com.br/wp-content/uploads/2020/01/Peaky-Blinders-6%C2%AA-temporada.jpg',
             dataRegistro: '2002-04-26',
             favoritos: []
-        }
+        },
+        {
+            id: 3,
+            nome: 'Wholesome Arthur',
+            tipo: 2,
+            email: 'arthur@gmail.com',
+            senha: 'asdasd',
+            imagem: 'https://i.kym-cdn.com/photos/images/newsfeed/002/184/477/c96.jpg',
+            dataRegistro: '2002-04-22',
+            favoritos: []
+        },
     ],
     games: [{
             id: 1,

@@ -4,17 +4,11 @@ const {
 
 const UsersController = require('../controllers/user-controller');
 
+const { middlewareUser } = require('../middlewares/middlewares');
+
 const routes = Router();
 
 const userController = new UsersController();
-
-const middlewareUser = (req, res, next) => {
-    const user = req.session.user;
-    console.log(user)
-    if(user){
-        next();
-    }else res.redirect('/home.html')
-};
 
 routes.post('/cadastrar', userController.cadastrar);
 routes.post('/login', userController.login);

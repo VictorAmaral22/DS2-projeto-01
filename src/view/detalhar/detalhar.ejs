@@ -15,10 +15,14 @@
     
     <p><%= game.sinopse %></p>
 
-    <a href="/games/<%= game.id %>/add-lista">S2</a>
+    <% if(user && user.tipo != 1) { %>
+        <a href="/games/<%= game.id %>/add-lista">S2</a>
+    <% } %>
     <br/><br/>
-    <a href="/games/<%= game.id %>/deletar">ALTERAR</a>
-    <br/><br/>
-    <a href="/games/<%= game.id %>/deletar">DELETAR</a>
+    <% if(user && user.tipo == 1) { %>
+        <a href="/games/<%= game.id %>/alterar">ALTERAR</a>
+        <br/><br/>
+        <a href="/games/<%= game.id %>/deletar">DELETAR</a>
+    <% } %>
 </body>
 </html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../includes/head') %>
+
+<body>
+
+    <%- include('../includes/navbar') %>
+
+    <h1>Tem certeza que deseja deletar o jogo</h1>
+    <h2><%= game.nome %>, desenvolvido por <%= game.dev %></h2>    
+
+    <form action="/games/<%= game.id %>/deletar" method="post">
+        <input type="submit" value="Sim">
+        <a href="/games/<%= game.id %>">Não</a>
+    </form>
+
+</body>
+</html>

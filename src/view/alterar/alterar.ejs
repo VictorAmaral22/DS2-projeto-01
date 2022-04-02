@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('../includes/head') %>
+
+    <body>
+
+        <%- include('../includes/navbar') %>
+
+        <h1>Editando jogo -
+            <%= game.nome %></h1>
+
+        <br>
+
+        <form action="/games/<%= game.id %>/alterar" method="post">
+            <label for="nome">Nome:
+            </label>
+            <input type="text" name="nome" value="<%= game.nome %>">
+            <br><br>
+
+            <label for="dev">Desenvolvedora:
+            </label>
+            <input type="text" name="dev" value="<%= game.dev %>">
+            <br><br>
+
+            <label for="datalanc">Data de Lançamento:
+            </label>
+            <input type="date" name="datalanc" value="<%= game.datalanc %>">
+            <br><br>
+
+            <label for="genero">Gênero:
+            </label>
+            <select name="genero" id="">
+                <% for(let i = 0; i < generos.length; i++) { %>
+                    <% if(i == game.genero) { %>
+                        <option value="<%= i %>" selected><%= generos[i] %></option>
+                    <% } else { %>
+                        <option value="<%= i %>"><%= generos[i] %></option>
+                    <% } %>
+                <% } %>
+            </select>
+            <br><br>
+
+            <label for="sinopse">Sinopse:
+            </label>
+            <textarea name="sinopse">
+                <%= game.sinopse %>
+            </textarea>
+            <br><br>
+
+            <label for="capa">Capa:
+            </label>
+            <input type="text" name="capa" value="<%= game.capa %>">
+            <br><br>
+
+            <label for="wallpaper">Wallpaper:
+            </label>
+            <input type="text" name="wallpaper" value="<%= game.wallpaper %>">
+            <br><br>
+
+            <input type="submit" value="Alterar">
+        </form>
+        <a href="/games/<%= game.id %>">Voltar</a>
+
+    </body>
+</html>
