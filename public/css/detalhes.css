@@ -5,6 +5,12 @@ header{
     margin-left: 10px;
     flex-direction: row;
 }
+/* .game-wallpaper {
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 91vh;
+} */
 #img{
     background-image: url("https://meups.com.br/wp-content/uploads/2020/11/Comercial-de-Spider-Man-Miles-Morales.jpg");
     background-position: center;
