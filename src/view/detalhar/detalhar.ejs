@@ -16,7 +16,12 @@
     <p><%= game.sinopse %></p>
 
     <% if(user && user.tipo != 1) { %>
-        <a href="/games/<%= game.id %>/add-lista">S2</a>
+        
+        <% if(user.favoritos.find(item => item == game.id)) { %>
+            <p>Favoritado</p>
+        <% } else { %>
+            <a href="/games/<%= game.id %>/add-lista">Favoritar</a>
+        <% } %>
     <% } %>
     <br/><br/>
     <% if(user && user.tipo == 1) { %>
