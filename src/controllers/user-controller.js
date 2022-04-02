@@ -59,13 +59,6 @@ class UsersController {
         return res.redirect('/home.html');
     }
 
-    // async editUser(req, res) {     const user = req.body;
-    // console.log(req.body)     const foundUser = users.find(item => item.email ==
-    // user.email);     if (foundUser.senha == user.senha) {
-    // req.session.user = foundUser;         return res.render('profile/profile', {
-    //            user: foundUser         });     } else {         return
-    // res.send('Usuário ou senha incorretos');     } }
-
     async delUser(req, res) {
         const email = req.session.user.email
         const foundUser = users.find(item => item.email == email);
