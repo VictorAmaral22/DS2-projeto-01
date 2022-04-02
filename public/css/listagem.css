@@ -1,6 +1,18 @@
-.game-cover {
+#game-cover {
     background-position: center;
     background-size: cover;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
+    margin-right: 80px;
+    margin-left: 80px;
+}
+#flex{
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+a{
+    align-self: center;
+    margin-bottom: 50px;
 }

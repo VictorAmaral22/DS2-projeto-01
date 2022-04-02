@@ -8,24 +8,23 @@
     <%- include('../includes/navbar') %>
 
     <h1>Lista dos games disponiveis</h1>
-
-    <table>
+    <div id="flex">
         <% for(let i = 0; i < games.length; i++){ %>
-        <tr>
-            <td>
-                <div style="background-image: url('<%- games[i].capa %>');" class="game-cover">
-            </td>
-            <td>
+            <div style="align-items: center;margin-bottom: 50px;">
+            <div onclick="houver()" style="background-image: url('<%- games[i].capa %>');" id="game-cover">
+            </div>
                 <a href="games/<%= games[i].id %>">
                     <%= games[i].nome %>
                 </a>
-            </td>
-            <td><%= games[i].dev %></td>
-        </tr>
+            </div>
         <% } %>
-    </table>
+    </div>
 
-
+<script>
+    houver = () =>{
+        document.getElementsById('game-cover').style.display= 'none'
+    }
+</script>
 </body>
 
 </html>
