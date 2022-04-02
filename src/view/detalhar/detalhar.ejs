@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include('../includes/head') %>
+    <%- include('../includes/head') %>
 
-<body>
+    <body>
 
-    <%- include('../includes/navbar') %>
-    <div id="wallpaper" style="background-image: url('<%= game.wallpaper %>');" >
-        <div id="margin">
-            <h1 id="title"><%= game.nome %></h1>
-            <h2 id="subtitle">Desenvolvido por <%= game.dev %></h2>
-            <div id="quadrado">
-                <p id="genero"><%= generos[game.genero].toUpperCase() %></p>
-            </div>
-            <% if(user && user.tipo != 1) { %>
-            <div id="clickComBorder">
-                <p id="addFav" href="/games/<%= game.id %>/add-lista">Adicionar à lista de desejos</p>
-            </div>
-            <% } %>
-            <div id="row2">
-                <p>Data de lançamento:</p>
-                <p><%= game.datalanc %></p>
+        <%- include('../includes/navbar') %>
+        <div id="wallpaper" style="background-image: url('<%= game.wallpaper %>');">
+            <div id="margin">
+                <h1 id="title"><%= game.nome %></h1>
+                <h2 id="subtitle">Desenvolvido por
+                    <%= game.dev %></h2>
+                <div id="quadrado">
+                    <p id="genero"><%= generos[game.genero].toUpperCase() %></p>
+                </div>
+                <div id="clickComBorder">
+                    <% if(user && user.favoritos.find(item => item == game.id)) { %>
+                        <p id="addFav">Favoritado</p>
+                    <% } else { %>
+                        <p id="addFav"><a href="/games/<%= game.id %>/add-lista">Adicionar à lista de desejos</a></p>
+                    <% } %>
+                </div>
+                <div id="row2">
+                    <p>Data de lançamento:</p>
+                    <p><%= game.datalanc %></p>
+                </div>
             </div>
         </div>
-    </div>
-    <div id="info">
-        <h2 align="center" id="h2font">Informações gerais</h2>
-        <div id="outraCor">
-            <p id="lineHeight"><%= game.sinopse %></p>
+        <div id="info">
+            <h2 align="center" id="h2font">Informações gerais</h2>
+            <div id="outraCor">
+                <p id="lineHeight"><%= game.sinopse %></p>
+            </div>
         </div>
     </div>
     <br/><br/>

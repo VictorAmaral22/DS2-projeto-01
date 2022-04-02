@@ -58,9 +58,13 @@ h2, p{
 #margin{
     margin-left: 7vw;
 }
-#addFav{
+#addFav {
     font-size: 24;
     font-weight: bold;
+}
+#addFav a {
+    text-decoration: none;
+    color: #fff;
 }
 #info{
     background-color: #141414;

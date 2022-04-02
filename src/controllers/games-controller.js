@@ -26,7 +26,12 @@ class GamesController {
         const { id } = req.params;
         const userList = users.filter(item => item.id == user.id)[0].favoritos;
         userList.push(id);
+        user.favoritos = userList;
+        req.session.user = user;
+        console.log(req.session.user);
+
         const game = games.filter(item => item.id == id);
+
         return res.render('detalhar/detalhar', { game: game[0], generos: generos, user: user });
     }
 
