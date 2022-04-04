@@ -1,11 +1,11 @@
 const db = require('../database/db');
-const {users} = require('../database/db');
+const {users, games} = require('../database/db');
 class UsersController {
 
     async getUser(req, res) {
         const user = req.session.user
         console.log(user);
-        return res.render("profile/profile", {user: user})
+        return res.render("profile/profile", {user: user, games:games})
     }
 
     async cadastrar(req, res) {

@@ -49,3 +49,12 @@ input {
     height: 30px;
     align-self: center;
 }
+
+#game-cover {
+    background-position: center;
+    background-size: cover;
+    width: 250px;
+    height: 250px;
+    margin-right: 80px;
+    margin-left: 80px;
+}

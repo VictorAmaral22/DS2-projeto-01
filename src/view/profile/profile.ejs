@@ -61,6 +61,15 @@
     </main>
     <footer>
         <h2>Lista de favoritos</h2>
+        <% for(let i = 0; i < games.length; i++){ %>
+            <div style="align-items: center;margin-bottom: 50px;">
+            <div style="background-image: url('<%- games[i].capa %>');" id="game-cover">
+            </div>
+                <a href="games/<%= games[i].id %>">
+                    <%= games[i].nome %>
+                </a>
+            </div>
+        <% } %>
     </footer>
     <script>
         AtivarInput = ()=>{

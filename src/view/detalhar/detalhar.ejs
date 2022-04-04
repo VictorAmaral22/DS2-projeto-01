@@ -17,10 +17,10 @@
                 <div id="clickComBorder">
                     <% if(user && user.favoritos.find(item => item == game.id)) { %>
                         <p id="addFav">Favoritado</p>
-                    <% } else { %>
+                    <% } else if(user && user.tipo !== 1) { %>
                         <p id="addFav"><a href="/games/<%= game.id %>/add-lista">Adicionar à lista de desejos</a></p>
-                    <% } %>
-                </div>
+                        <% } %>
+                    </div>
                 <div id="row2">
                     <p>Data de lançamento:</p>
                     <p><%= game.datalanc %></p>
@@ -34,8 +34,8 @@
             </div>
         </div>
     </div>
-    <br/><br/>
     <% if(user && user.tipo == 1) { %>
+        <br/><br/>
         <a href="/games/<%= game.id %>/alterar">ALTERAR</a>
         <br/><br/>
         <a href="/games/<%= game.id %>/deletar">DELETAR</a>

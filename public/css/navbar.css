@@ -36,6 +36,8 @@ header {
 
 .header-list a {
     text-decoration: none;
+    align-self: center;
+    text-align: center;
 }
 
 .header-list:hover {
