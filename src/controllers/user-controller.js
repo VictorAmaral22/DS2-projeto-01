@@ -5,7 +5,11 @@ class UsersController {
     async getUser(req, res) {
         const user = req.session.user
         console.log(user);
-        return res.render("profile/profile", {user: user, games:games})
+        let userList = users.filter(item => item.id == user.id)[0].favoritos;
+        console.log('userList',userList);
+        let favoriteGames = games.filter(item => userList.findIndex(elem => elem == item.id) != -1);
+        console.log('favoriteGames',favoriteGames);
+        return res.render("profile/profile", { user: user, games: favoriteGames })
     }
 
     async cadastrar(req, res) {

@@ -7,11 +7,16 @@ class GamesController {
         return res.render('listagem/listagem', { games: games, user: user });
     }
 
+    async renderAdd (req, res) {
+        const user = req.session.user;
+        return res.render('cadastrarGame/cadastrarGame', { generos: generos, user: user  });
+    }
+
     async add (req, res) {
-        const { id, nome, dev, datalanc, sinopse, genero, capa, wallpaper } = req.body;
-        const game = { id: id, nome: nome, dev: dev, datalanc: datalanc, sinopse: sinopse, genero: genero, capa: capa, wallpaper: wallpaper };
+        const { nome, dev, datalanc, sinopse, genero, capa, wallpaper } = req.body;
+        const game = { id: nanoid(), nome: nome, dev: dev, datalanc: datalanc, sinopse: sinopse, genero: genero, capa: capa, wallpaper: wallpaper };
         games.push(game);
-        return res.redirect('listagem/listagem');
+        return res.redirect('/games');
     }
 
     async detalhar (req, res) {

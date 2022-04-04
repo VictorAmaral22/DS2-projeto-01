@@ -5,13 +5,29 @@ header{
     margin-left: 10px;
     flex-direction: row;
 }
+
+.GameDetails {
+    display: flex;
+    flex-direction: column;
+}
+
 #wallpaper {
     background-position: center;
     background-size: cover;
     width: 100%;
     height: 93vh;
-    position: absolute;
+    /* position: absolute; */
 }
+
+.gradient-background {
+    width: inherit;
+    height: inherit;
+    background: linear-gradient(to right, #111 5%, transparent 95%);
+    display: flex;
+    flex-direction: column;
+    padding-top: 10%;
+}
+
 #row2{
     display: flex;
     flex-direction: row;
@@ -23,19 +39,20 @@ h2, p{
 #subtitle{
     font-size: 22px;
     font-weight: 400;
-    margin-top: 15px;
+    /* margin-top: 15px; */
 }
 #title{
     font-size: 48px;
     color: white;
-    margin-top: 10%;
 }
 #quadrado{
-    padding: 3px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
     background-color: rgba(255, 255, 255, 0.3);
     border: 2px solid;
     border-color: white;
-    width: 7%;
+    max-width: max-content;
     margin-top: 15px;
 }
 #clickComBorder{
@@ -62,6 +79,8 @@ h2, p{
 #addFav {
     font-size: 24;
     font-weight: bold;
+    text-decoration: none;
+    color: #fff;
 }
 #addFav a {
     text-decoration: none;
@@ -69,13 +88,12 @@ h2, p{
 }
 #info{
     background-color: #141414;
-    margin-top: 92vh;
+    /* margin-top: 92vh; */
     height: 104vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-
 }
 #outraCor{
     background-color: #1E1F22;

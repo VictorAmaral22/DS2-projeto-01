@@ -9,7 +9,8 @@ const gamesController = new GamesController();
 
 routes.get('/', gamesController.listaGeral);
 
-routes.post('/add', gamesController.add);
+routes.get('/add', middlewareAdmin, gamesController.renderAdd);
+routes.post('/add', middlewareAdmin, gamesController.add);
 
 routes.get('/:id', gamesController.detalhar);
 routes.get('/:id/add-lista', middlewareUser, gamesController.addLista);

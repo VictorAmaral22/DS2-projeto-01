@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <%- include('../includes/head') %>
+<%- include('../includes/head') %>
 
-    <body>
+<body>
 
-        <%- include('../includes/navbar') %>
+    <%- include('../includes/navbar') %>
+
+    <div class="GameDetails">
         <div id="wallpaper" style="background-image: url('<%= game.wallpaper %>');">
-            <div id="margin">
-                <h1 id="title"><%= game.nome %></h1>
-                <h2 id="subtitle">Desenvolvido por
-                    <%= game.dev %></h2>
-                <div id="quadrado">
-                    <p id="genero"><%= generos[game.genero].toUpperCase() %></p>
-                </div>
-                <div id="clickComBorder">
-                    <% if(user && user.favoritos.find(item => item == game.id)) { %>
+            <div class="gradient-background">
+                <div id="margin">
+                    <h1 id="title"><%= game.nome %></h1>
+                    <h2 id="subtitle">Desenvolvido por
+                        <%= game.dev %></h2>
+                    <div id="quadrado">
+                        <p id="genero"><%= generos[game.genero].toUpperCase() %></p>
+                    </div>
+                    <div id="clickComBorder">
+                        <% if(user && user.favoritos.find(item => item == game.id)) { %>
                         <p id="addFav">Favoritado</p>
-                    <% } else if(user && user.tipo !== 1) { %>
-                        <p id="addFav"><a href="/games/<%= game.id %>/add-lista">Adicionar à lista de desejos</a></p>
+                        <% } else if(user && user.tipo !== 1) { %>
+                        <p id="addFav"><a href="/games/<%= game.id %>/add-lista">Adicionar aos favoritos</a></p>
+                        <% } else if(user && user.tipo == 1) { %>
+                        <p id="addFav">Admins não podem favoritar um game</p>
+                        <% } else if(!user) { %>
+                        <p id="addFav"><a href="/home.html">Adicionar aos favoritos</a></p>
                         <% } %>
                     </div>
-                <div id="row2">
-                    <p>Data de lançamento:</p>
-                    <p><%= game.datalanc %></p>
+                    <div id="row2">
+                        <p>Data de lançamento:</p>
+                        <p><%= game.datalanc %></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -32,13 +40,15 @@
             <div id="outraCor">
                 <p id="lineHeight"><%= game.sinopse %></p>
             </div>
+            <% if(user && user.tipo == 1) { %>
+                <br /><br />
+                <a href="/games/<%= game.id %>/alterar">ALTERAR</a>
+                <br /><br />
+                <a href="/games/<%= game.id %>/deletar">DELETAR</a>
+            <% } %>
         </div>
     </div>
-    <% if(user && user.tipo == 1) { %>
-        <br/><br/>
-        <a href="/games/<%= game.id %>/alterar">ALTERAR</a>
-        <br/><br/>
-        <a href="/games/<%= game.id %>/deletar">DELETAR</a>
-    <% } %>
+
 </body>
+
 </html>

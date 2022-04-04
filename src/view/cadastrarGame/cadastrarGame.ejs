@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('../includes/head') %>
+
+    <body>
+
+        <%- include('../includes/navbar') %>
+
+        <h1>Cadastrando jogo</h1>
+
+        <br>
+
+        <form action="/games/add" method="post">
+            <label for="nome">Nome:
+            </label>
+            <input type="text" name="nome">
+            <br><br>
+
+            <label for="dev">Desenvolvedora:
+            </label>
+            <input type="text" name="dev">
+            <br><br>
+
+            <label for="datalanc">Data de Lançamento:
+            </label>
+            <input type="date" name="datalanc">
+            <br><br>
+
+            <label for="genero">Gênero:
+            </label>
+            <select name="genero" id="">
+                <% for(let i = 0; i < generos.length; i++) { %>
+                    <option value="<%= i %>"><%= generos[i] %></option>
+                <% } %>
+            </select>
+            <br><br>
+
+            <label for="sinopse">Sinopse:
+            </label>
+            <textarea name="sinopse"></textarea>
+            <br><br>
+
+            <label for="capa">Capa:
+            </label>
+            <input type="text" name="capa">
+            <br><br>
+
+            <label for="wallpaper">Wallpaper:
+            </label>
+            <input type="text" name="wallpaper">
+            <br><br>
+
+            <input type="submit" value="Cadastrar jogo">
+        </form>
+        <a href="/games">Voltar</a>
+
+    </body>
+</html>

@@ -27,7 +27,7 @@ let db = {
             senha: 'asdasd',
             imagem: 'https://i.kym-cdn.com/photos/images/newsfeed/002/184/477/c96.jpg',
             dataRegistro: '2002-04-22',
-            favoritos: []
+            favoritos: [1, 2, 3, 4]
         },
     ],
     games: [{
@@ -79,7 +79,7 @@ let db = {
             genero: 2,
             capa: 'https://image.api.playstation.com/vulcan/ap/rnd/202101/0812/FkzwjnJknkrFlozkTdeQBMub.png',
             wallpaper: 'https://criticalhits.com.br/wp-content/uploads/2021/05/RE_Village_Ethan_Chris_Key_Art-edit.jpg'
-        },
+        }
     ],
     generos: [
         'Ação', 'Aventura', 'Terror', 'Puzzle', 'RPG', 'Corrida', 'Esporte'

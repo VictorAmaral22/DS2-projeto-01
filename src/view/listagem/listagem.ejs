@@ -8,23 +8,30 @@
     <%- include('../includes/navbar') %>
 
     <h1>Lista dos games disponiveis</h1>
+    <% if(user && user.tipo == 1){ %>
+        <a href="games/add" >Cadastrar novo jogo</a>
+    <% } %>
     <div id="flex">
         <% for(let i = 0; i < games.length; i++){ %>
-            <div style="align-items: center;margin-bottom: 50px;">
-            <div onclick="houver()" style="background-image: url('<%- games[i].capa %>');" id="game-cover">
+        <a href="/games/<%= games[i].id %>" class="game-container" onmouseenter="hoverIn(<%= i %>)"
+            onmouseleave="hoverOut(<%= i %>)">
+            <div style=" background-image: url('<%- games[i].capa %>');" id="game-cover-<%= i %>" class="game-cover">
             </div>
-                <a href="games/<%= games[i].id %>">
-                    <%= games[i].nome %>
-                </a>
-            </div>
+            <p class="game-title" id="game-title-<%= i %>" onmouseenter="hoverIn(<%= i %>)"><%= games[i].nome %></p>
+        </a>
         <% } %>
     </div>
 
-<script>
-    houver = () =>{
-        document.getElementsById('game-cover').style.display= 'none'
-    }
-</script>
+    <script>
+        const hoverIn = (id) => {
+            document.getElementById('game-title-' + id).style.display = 'flex';
+            document.getElementById('game-cover-' + id).style.opacity = 0.4;
+        }
+        const hoverOut = (id) => {
+            document.getElementById('game-title-' + id).style.display = 'none'
+            document.getElementById('game-cover-' + id).style.opacity = 1;
+        }
+    </script>
 </body>
 
 </html>

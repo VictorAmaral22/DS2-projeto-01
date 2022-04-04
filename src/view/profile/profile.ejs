@@ -1,16 +1,6 @@
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
-    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
-    <link rel="stylesheet" href="/css/profile.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Marvel&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/navbar.css">
-</head>
+
+<%- include('../includes/head') %>
 
 <body>
     <%- include('../includes/navbar') %>
@@ -61,14 +51,24 @@
     </main>
     <footer>
         <h2>Lista de favoritos</h2>
-        <% for(let i = 0; i < games.length; i++){ %>
-            <div style="align-items: center;margin-bottom: 50px;">
-            <div style="background-image: url('<%- games[i].capa %>');" id="game-cover">
-            </div>
-                <a href="games/<%= games[i].id %>">
-                    <%= games[i].nome %>
+        <% if(games.length > 0){ %>
+        <div class="user-games-list">
+            <% for(let i = 0; i < games.length; i++){ %>
+                <!-- <div style="align-items: center;margin-bottom: 50px;">
+                <div style="background-image: url('<%- games[i].capa %>');" id="game-cover">
+                </div>
+                    <a href="games/<%= games[i].id %>">
+                        <%= games[i].nome %>
+                    </a>
+                </div> -->
+    
+                <a href="/games/<%= games[i].id %>" class="game-container" onmouseenter="hoverIn(<%= i %>)"
+                onmouseleave="hoverOut(<%= i %>)">
+                    <div style=" background-image: url('<%- games[i].capa %>');" id="game-cover-<%= i %>" class="game-cover"></div>
+                    <p class="game-title" id="game-title-<%= i %>" onmouseenter="hoverIn(<%= i %>)"><%= games[i].nome %></p>
                 </a>
-            </div>
+            <% } %>
+        </div>
         <% } %>
     </footer>
     <script>
@@ -88,6 +88,15 @@
                 document.getElementById('buttonConf').style.display= 'flex'
                 document.getElementsByClassName('muda').style.display= 'flex'
             }
+        }
+
+        const hoverIn = (id) => {
+            document.getElementById('game-title-' + id).style.display = 'flex';
+            document.getElementById('game-cover-' + id).style.opacity = 0.4;
+        }
+        const hoverOut = (id) => {
+            document.getElementById('game-title-' + id).style.display = 'none'
+            document.getElementById('game-cover-' + id).style.opacity = 1;
         }
     </script>
 </body>
