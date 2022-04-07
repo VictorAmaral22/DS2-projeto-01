@@ -11,10 +11,36 @@
     <% if(user && user.tipo == 1){ %>
         <a href="games/add" >Cadastrar novo jogo</a>
     <% } %>
+    <div>
+        <p>Filtre os jogos por genero</p>
+        <select name="genero" id="select">
+            <option value='10'>Todos</option>
+            <option value='0'>Ação</option>
+            <option value=1>Aventura</option>
+            <option value=2>Terror</option>
+            <option value=3>Puzzle</option>
+            <option value=4>RPG</option>
+            <option value=5>Corrida</option>
+            <option value=6>Esporte</option>
+        </select>
+        <a id="filter-link" href="">Filtrar</a>
+        <a href="/games" style="margin-left:10px">Limpar</a>
+
+    </div>
+    <div>
+        <p>Ordenar por data</p>
+        <select name="data" id="data">
+            <option value=0>deixa assim</option>
+            <option value=1>Crecente</option>
+            <option value=2>Decrecente</option>
+        </select>
+        <a id="ordenar" href="">Ordenar</a>
+    </div>
     <div id="flex">
         <% for(let i = 0; i < games.length; i++){ %>
-        <a href="/games/<%= games[i].id %>" class="game-container" onmouseenter="hoverIn('<%= i %>')"
-            onmouseleave="hoverOut('<%= i %>')">
+            <a href="/games/<%= games[i].id %>" class="game-container" onmouseenter="hoverIn('<%= i %>')"
+                onmouseleave="hoverOut('<%= i %>')">
+
             <div style=" background-image: url('<%- games[i].capa %>');" id="game-cover-<%= i %>" class="game-cover">
             </div>
             <p class="game-title" id="game-title-<%= i %>" onmouseenter="hoverIn('<%= i %>')"><%= games[i].nome %></p>
@@ -23,6 +49,18 @@
     </div>
 
     <script>
+        const select=document.getElementById('select');
+        const link=document.getElementById('filter-link');
+        select.onchange=()=>{
+            const rota=`/games/?genero=${select.value}`;
+            link.href=rota;
+        }
+        const select2=document.getElementById('data');
+        const link2=document.getElementById('ordenar');
+        select2.onchange=()=>{
+            const rota2=`/games/?data=${select2.value}`;
+            link2.href=rota2;
+        }
         const hoverIn = (id) => {
             document.getElementById('game-title-' + id).style.display = 'flex';
             document.getElementById('game-cover-' + id).style.opacity = 0.4;

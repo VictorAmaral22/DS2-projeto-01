@@ -15,5 +15,10 @@ const middlewareUser = (req, res, next) => {
         next();
     }else res.redirect('/home.html')
 };
-
-module.exports = { middlewareAdmin, middlewareUser }
+const middlewareCache = (req,res,next)=>{
+    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+    res.header('Expires', '-1');
+    res.header('Pragma', 'no-cache');
+    next();
+}
+module.exports = { middlewareAdmin, middlewareUser, middlewareCache }

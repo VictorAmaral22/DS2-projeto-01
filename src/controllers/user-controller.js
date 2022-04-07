@@ -4,16 +4,7 @@ class UsersController {
 
     async getUser(req, res) {
         const user = req.session.user
-        console.log(user);
-        let userList = users.filter(item => item.id == user.id)[0].favoritos;
-        console.log('userList',userList);
-        let favoriteGames = [];
-        if(userList.length === 0){
-            return favoriteGames = []
-        }
-        favoriteGames = games.filter(item => userList.findIndex(elem => elem == item.id) != -1);
-        console.log('favoriteGames',favoriteGames);
-        return res.render("profile/profile", { user: user, games: favoriteGames })
+        return res.render("profile/profile", { user: user })
     }
 
     async cadastrar(req, res) {
@@ -75,6 +66,16 @@ class UsersController {
             .splice(foundUser, 1);
         console.log(db)
         return res.redirect('/home.html');
+    }
+    async delUserFav(req, res) {
+        const user = req.session.user
+        const {id} = req.params
+        const userIndex = users.findIndex(item => item.id == user.id);
+        const foundGame = user.favoritos.findIndex(item => item.id == id);
+        console.log("MAMA",foundGame);
+        users[userIndex].favoritos.splice(foundGame, 1);
+        req.session.user=users[userIndex];
+        return res.redirect('/users/getUser');
     }
     async editUser (req, res) {
         const { id } = req.params;

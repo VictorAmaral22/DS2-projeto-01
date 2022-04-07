@@ -18,7 +18,7 @@
                         <p id="genero"><%= generos[game.genero].toUpperCase() %></p>
                     </div>
                     <div id="clickComBorder">
-                        <% if(user && user.favoritos.find(item => item == game.id)) { %>
+                        <% if(user && user.favoritos.find(item => item.id == game.id)) { %>
                         <p id="addFav">Favoritado</p>
                         <% } else if(user && user.tipo !== 1) { %>
                         <p id="addFav"><a href="/games/<%= game.id %>/add-lista">Adicionar aos favoritos</a></p>

@@ -4,7 +4,19 @@ const { nanoid } = require('nanoid');
 class GamesController {
     async listaGeral (req, res) {
         const user = req.session.user;
-        return res.render('listagem/listagem', { games: games, user: user });
+        console.log(req.query);
+        let tmpgames = games
+        if(req.query.genero) {
+            tmpgames = games.filter(i=>i.genero == req.query.genero)
+        }
+        if(req.query.data) {
+            if(req.query.data == 1){
+                tmpgames = games.sort((a,b)=>new Date(a.datalanc) - new Date(b.datalanc))
+            } else{
+                tmpgames = games.sort((a,b)=>new Date(b.datalanc) - new Date(a.datalanc))
+            }
+        }
+        return res.render('listagem/listagem', { games: tmpgames, user: user });
     }
 
     async renderAdd (req, res) {
@@ -29,9 +41,8 @@ class GamesController {
     async addLista (req, res) {
         const user = req.session.user;
         const { id } = req.params;
-        const userList = users.filter(item => item.id == user.id)[0].favoritos;
-        userList.push(id);
-        user.favoritos = userList;
+        const oGame = games.find(item => item.id == id);
+        user.favoritos.push(oGame);
         req.session.user = user;
         console.log(req.session.user);
 

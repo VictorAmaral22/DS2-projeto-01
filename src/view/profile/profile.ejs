@@ -51,27 +51,23 @@
     </main>
     <footer>
         <h2 id="listaJogos">Lista de favoritos</h2>
-        <!-- <% if(user.favoritos.length > 0){ %> -->
+        <% if(user.favoritos.length > 0){ %>
         <div class="user-games-list">
-            <% for(let i = 0; i < games.length; i++){ %>
-                <!-- <div style="align-items: center;margin-bottom: 50px;">
-                <div style="background-image: url('<%- games[i].capa %>');" id="game-cover">
-                </div>
-                    <a href="games/<%= games[i].id %>">
-                        <%= games[i].nome %>
-                    </a>
-                </div> -->
-    
-                <a href="/games/<%= games[i].id %>" class="game-container" onmouseenter="hoverIn('<%= i %>')"
-                onmouseleave="hoverOut('<%= i %>')">
-                    <div style=" background-image: url('<%- games[i].capa %>');" id="game-cover-<%= i %>" class="game-cover"></div>
-                    <p class="game-title" id="game-title-<%= i %>" onmouseenter="hoverIn('<%= i %>')"><%= games[i].nome %></p>
+            <% user.favoritos.map(user=>{ %>
+                <div style="align-items: center;margin-bottom: 50px;">
+                    <a href="/users/delUserFav/<%= user.id%>">Remover dos favoritos</a>
+                <a href="/games/<%= user.id %>" class="game-container" onmouseenter="hoverIn('<%= user.id %>')"
+                    onmouseleave="hoverOut('<%= user.id %>')">
+                    <div style=" background-image: url('<%- user.capa %>');" id="game-cover-<%= user.id %>" class="game-cover">
+                    </div>
+                    <p class="game-title" id="game-title-<%= user.id %>" onmouseenter="hoverIn('<%= user.id %>')"><%= user.nome %></p>
                 </a>
+                </div>
+                <% }) %>
+            <% } else {%>
+            <p id="listaJogos">Você ainda não favoritou jogos!</p>
             <% } %>
         </div>
-        <!-- <% } else {%>
-        <p id="listaJogos">Você ainda não favoritou jogos!</p>
-        <% } %> -->
     </footer>
     <script>
         AtivarInput = ()=>{
