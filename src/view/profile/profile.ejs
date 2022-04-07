@@ -10,34 +10,39 @@
             <form action="/users/editUser" method="POST">
             <div id="row">
                 <div id="img" style="background-image: url('<%- user.imagem %>');"></div>
-                    <div style="margin-top: 20px; margin-left: 20px;">
-                        <div id="row">
-                        <p>Nome:</p>
-                        <p id="nome">
-                            <%- user.nome %>
-                        </p>
-                        <input name="nome" id="input" placeholder="Nome" style="display:none">
-                    </div>
-                        <div id="row">
-                        <p>Data de registro: </p>
-                        <p id="data">
-                            <%- user.dataRegistro %>
-                        </p>
-                        </div>
-                        
-                        <div id="row">
-                        <p>Email:</p>
-                        <p id="email"> 
-                            <%- user.email %>
-                        </p>
-                        <input name="email" id="input3" placeholder="Email" style="display:none">
-                        </div>
-                        <div id="row" className="muda" style="display:none">
-                            <p>Senha:</p>
-                            <input placeholder="Senha">
-                            </div>
-                    </div>
-
+                <input name="imagem" id="input1" placeholder="url" style="display:none" value="<%- user.imagem %>">
+                
+                <div style="margin-top: 20px; margin-left: 20px;">
+                    <div id="row">
+                    <p>Nome: </p>
+                    <p id="nome">
+                        <%- user.nome %>
+                    </p>
+                    <input name="nome" id="input2" placeholder="Nome" style="display:none" value="<%- user.nome %>">
+                </div>
+                
+                <div id="row">
+                    <p>Data de registro: </p>
+                    <p id="data">
+                        <%- user.dataRegistro %>
+                    </p>
+                </div>
+                    
+                <div id="row">
+                    <p>Email: </p>
+                    <p id="email"> 
+                        <%- user.email %>
+                    </p>
+                    <input name="email" id="input3" placeholder="Email" style="display:none" value="<%- user.email %>">
+                </div>
+                
+                <div id="row">
+                    <p>Senha: </p>
+                    <p id="senha">
+                        ****************
+                    </p>
+                    <input name="senha" id="input4" placeholder="Senha" style="display:none" value="<%- user.senha %>">
+                </div>
             </div>
             <div id="buttonTop">
                 <button type="button" onclick="AtivarInput()">Editar conta</button>
@@ -53,14 +58,14 @@
         <h2 id="listaJogos">Lista de favoritos</h2>
         <% if(user.favoritos.length > 0){ %>
         <div class="user-games-list">
-            <% user.favoritos.map(user=>{ %>
+            <% user.favoritos.map(favGame => { %>
                 <div style="align-items: center;margin-bottom: 50px;">
-                    <a href="/users/delUserFav/<%= user.id%>">Remover dos favoritos</a>
-                <a href="/games/<%= user.id %>" class="game-container" onmouseenter="hoverIn('<%= user.id %>')"
-                    onmouseleave="hoverOut('<%= user.id %>')">
-                    <div style=" background-image: url('<%- user.capa %>');" id="game-cover-<%= user.id %>" class="game-cover">
+                    <a href="/users/delUserFav/<%= favGame.id%>">Remover dos favoritos</a>
+                <a href="/games/<%= favGame.id %>" class="game-container" onmouseenter="hoverIn('<%= favGame.id %>')"
+                    onmouseleave="hoverOut('<%= favGame.id %>')">
+                    <div style=" background-image: url('<%- favGame.capa %>');" id="game-cover-<%= favGame.id %>" class="game-cover">
                     </div>
-                    <p class="game-title" id="game-title-<%= user.id %>" onmouseenter="hoverIn('<%= user.id %>')"><%= user.nome %></p>
+                    <p class="game-title" id="game-title-<%= favGame.id %>" onmouseenter="hoverIn('<%= favGame.id %>')"><%= favGame.nome %></p>
                 </a>
                 </div>
                 <% }) %>
@@ -71,18 +76,24 @@
     </footer>
     <script>
         AtivarInput = ()=>{
-            if(document.getElementById('input').style.display == 'flex'){
-            document.getElementById('input').style.display= 'none'
+            if(document.getElementById('input1').style.display == 'flex'){
+            document.getElementById('input1').style.display= 'none'
+            document.getElementById('input2').style.display= 'none'
             document.getElementById('input3').style.display= 'none'
+            document.getElementById('input4').style.display= 'none'
             document.getElementById('nome').style.display= 'flex'
             document.getElementById('email').style.display= 'flex'
+            document.getElementById('senha').style.display= 'flex'
             document.getElementById('buttonConf').style.display= 'none'
             document.getElementsByClassName('muda').style.display= 'flex'
-            }else{
-                document.getElementById('input').style.display= 'flex'
+            } else {
+                document.getElementById('input1').style.display= 'flex'
+                document.getElementById('input2').style.display= 'flex'
                 document.getElementById('input3').style.display= 'flex'
+                document.getElementById('input4').style.display= 'flex'
                 document.getElementById('nome').style.display= 'none'
                 document.getElementById('email').style.display= 'none'
+                document.getElementById('senha').style.display= 'none'
                 document.getElementById('buttonConf').style.display= 'flex'
                 document.getElementsByClassName('muda').style.display= 'flex'
             }

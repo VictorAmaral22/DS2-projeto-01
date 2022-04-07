@@ -42,13 +42,15 @@ class GamesController {
         const user = req.session.user;
         const { id } = req.params;
         const oGame = games.find(item => item.id == id);
-        user.favoritos.push(oGame);
-        req.session.user = user;
+        let databaseUser = users.find(item => item.id == user.id);
+        databaseUser.favoritos.push(oGame);
+
+        req.session.user = databaseUser;
         console.log(req.session.user);
 
         const game = games.filter(item => item.id == id);
 
-        return res.render('detalhar/detalhar', { game: game[0], generos: generos, user: user });
+        return res.render('detalhar/detalhar', { game: game[0], generos: generos, user: databaseUser });
     }
 
     async renderAlterar (req, res) {

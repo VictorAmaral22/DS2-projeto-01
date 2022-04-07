@@ -59,43 +59,52 @@ class UsersController {
     }
 
     async delUser(req, res) {
-        const email = req.session.user.email
-        const foundUser = users.find(item => item.email == email);
-        db
-            .users
-            .splice(foundUser, 1);
-        console.log(db)
+        const user = req.session.user
+        const foundUser = users.findIndex(item => item.id == user.id);
+        users.splice(foundUser, 1);
+        console.log('users ',users);
+
         return res.redirect('/home.html');
     }
+
     async delUserFav(req, res) {
         const user = req.session.user
         const {id} = req.params
         const userIndex = users.findIndex(item => item.id == user.id);
         const foundGame = user.favoritos.findIndex(item => item.id == id);
-        console.log("MAMA",foundGame);
         users[userIndex].favoritos.splice(foundGame, 1);
-        req.session.user=users[userIndex];
+
+        req.session.user = users[userIndex];
+
         return res.redirect('/users/getUser');
     }
+
     async editUser (req, res) {
-        const { id } = req.params;
-        const { nome, email } = req.body;
+        const { nome, email, senha, imagem } = req.body;
         console.log('Alterando');
-        let user = users.find(i=>i.email===req.session.user.email);
+        let user = users.find(item => item.id == req.session.user.id);
+
         if(nome){
-            user.nome = nome
+            user.nome = nome;
         }
         if(email){
-            user.email = email
+            user.email = email;
         }
-        if(email&&nome){
-            user.email = email
-            user.nome = nome
+        if(senha){
+            user.senha = senha;
         }
-        let index = users.findIndex(item => item.id == id);
+        if(imagem){
+            user.imagem = imagem;
+        }
+
+        let index = users.findIndex(item => item.id == req.session.user.id);
+
         users[index] = user;
+
         console.log('users',users)
+
         req.session.user = user
+
         return res.redirect('/games');
     }
 }
