@@ -12,8 +12,8 @@
             <div class="gradient-background">
                 <div id="margin">
                     <h1 id="title"><%= game.nome %></h1>
-                    <h2 id="subtitle">Desenvolvido por
-                        <%= game.dev %></h2>
+                    <h3 id="subtitle">Desenvolvido por
+                        <%= game.dev %></h3>
                     <div id="quadrado">
                         <p id="genero"><%= generos[game.genero].toUpperCase() %></p>
                     </div>
@@ -25,7 +25,7 @@
                         <% } else if(user && user.tipo == 1) { %>
                         <p id="addFav">Admins não podem favoritar um game</p>
                         <% } else if(!user) { %>
-                        <p id="addFav"><a href="/home.html">Adicionar aos favoritos</a></p>
+                        <p id="addFav"><a href="/home.html">Crie sua conta e favorite os jogos</a></p>
                         <% } %>
                     </div>
                     <div id="row2">

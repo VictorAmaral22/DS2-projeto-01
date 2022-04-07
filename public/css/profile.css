@@ -63,7 +63,7 @@ input {
     display: flex;
     flex-direction: row;
     overflow: hidden;
-    overflow-x: scroll;
+    overflow-x: hidden;
 }
 
 .user-games-list .game-container {
@@ -96,4 +96,16 @@ input {
     position: absolute;
     text-align: justify;
     padding: 5px;
+}
+#flex {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#listaJogos{
+    color: black;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-size: 26px;
 }

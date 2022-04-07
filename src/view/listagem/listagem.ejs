@@ -13,11 +13,11 @@
     <% } %>
     <div id="flex">
         <% for(let i = 0; i < games.length; i++){ %>
-        <a href="/games/<%= games[i].id %>" class="game-container" onmouseenter="hoverIn(<%= i %>)"
-            onmouseleave="hoverOut(<%= i %>)">
+        <a href="/games/<%= games[i].id %>" class="game-container" onmouseenter="hoverIn('<%= i %>')"
+            onmouseleave="hoverOut('<%= i %>')">
             <div style=" background-image: url('<%- games[i].capa %>');" id="game-cover-<%= i %>" class="game-cover">
             </div>
-            <p class="game-title" id="game-title-<%= i %>" onmouseenter="hoverIn(<%= i %>)"><%= games[i].nome %></p>
+            <p class="game-title" id="game-title-<%= i %>" onmouseenter="hoverIn('<%= i %>')"><%= games[i].nome %></p>
         </a>
         <% } %>
     </div>

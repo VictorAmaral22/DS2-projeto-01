@@ -7,7 +7,11 @@ class UsersController {
         console.log(user);
         let userList = users.filter(item => item.id == user.id)[0].favoritos;
         console.log('userList',userList);
-        let favoriteGames = games.filter(item => userList.findIndex(elem => elem == item.id) != -1);
+        let favoriteGames = [];
+        if(userList.length === 0){
+            return favoriteGames = []
+        }
+        favoriteGames = games.filter(item => userList.findIndex(elem => elem == item.id) != -1);
         console.log('favoriteGames',favoriteGames);
         return res.render("profile/profile", { user: user, games: favoriteGames })
     }
@@ -72,6 +76,28 @@ class UsersController {
         console.log(db)
         return res.redirect('/home.html');
     }
+    async editUser (req, res) {
+        const { id } = req.params;
+        const { nome, email } = req.body;
+        console.log('Alterando');
+        let user = users.find(i=>i.email===req.session.user.email);
+        if(nome){
+            user.nome = nome
+        }
+        if(email){
+            user.email = email
+        }
+        if(email&&nome){
+            user.email = email
+            user.nome = nome
+        }
+        let index = users.findIndex(item => item.id == id);
+        users[index] = user;
+        console.log('users',users)
+        req.session.user = user
+        return res.redirect('/games');
+    }
 }
+
 
 module.exports = UsersController;

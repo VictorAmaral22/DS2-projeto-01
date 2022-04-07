@@ -14,7 +14,7 @@ routes.post('/cadastrar', userController.cadastrar);
 routes.post('/login', userController.login);
 routes.get('/logout', userController.logout);
 routes.get('/getUser', middlewareUser, userController.getUser);
-// routes.post('/editUser', middlewareUser, userController.editUser);
+routes.post('/editUser', middlewareUser, userController.editUser);
 routes.post('/delUser', middlewareUser, userController.delUser);
 
 module.exports = routes;
